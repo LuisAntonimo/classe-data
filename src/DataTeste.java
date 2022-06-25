@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,5 +55,32 @@ public class DataTeste {
   @Test
   public void testarSeAnoBissexto() {
     assertEquals(true, teste.eAnoBissexto());
+  }
+
+  @Test
+  public void testarConstrutorVazio() {
+    teste = new Data();
+
+    LocalDate data = LocalDate.now();
+    int mes = data.getMonthValue();
+    int dia = data.getDayOfMonth();
+    int ano = data.getYear();
+
+    assertEquals(dia, teste.getDia());
+    assertEquals(mes, teste.getMes());
+    assertEquals(ano, teste.getAno());
+    
+  }
+
+  @Test
+  public void testarPorExtenso() {
+    assertEquals("01/01/2000", teste.porExtenso());
+  }
+
+  @Test
+  public void testeDiaDaSemana() {
+    teste = new Data(2022, 3, 23);
+
+    assertEquals("Quarta-feira", teste.diaDaSemana());
   }
 }
